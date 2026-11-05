@@ -48,7 +48,7 @@ Akan muncul file-file seperti di gambar ini:
 DATABASE_URL="postgresql://username:password@localhost:5432/nama_database?schema=public"
 ```
 
-Rubah password dan nama_database sesuai dengan set up yang telah di lakukan di CLI PostgreSQL tadi.
+Ubah password dan nama_database sesuai dengan set up yang telah di lakukan di CLI PostgreSQL tadi.
 
 ## Buat schema model di `prisma/schema.prisma`
 
