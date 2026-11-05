@@ -14,7 +14,7 @@ sudo service postgresql start
 sudo -u postgres psql
 ```
 
-- Set up password & nama database
+### Set up password & nama database
 
 ```sql
 -- Ganti 'password_kamu' dengan password yang kamu inginkan
@@ -37,3 +37,47 @@ npm install prisma --save-dev
 # Inisialisasi setup Prisma
 npx prisma init
 ```
+
+Akan muncul file-file seperti di gambar ini:  
+<img width="459" height="488" alt="image" src="https://github.com/user-attachments/assets/8afa7ebd-5bc1-418d-af80-3f9621e9695a" />
+
+## Konfigurasi connection string di file .env
+
+```bash
+DATABASE_URL="postgresql://username:password@localhost:5432/nama_database?schema=public"
+```
+
+Rubah password dan nama_database sesuai dengan set up yang telah di lakukan di CLI PostgreSQL tadi.
+
+## Buat schema model di `prisma/schema.prisma`
+
+```
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model product {
+  id    int    @id    @default(autoincrement())
+  name  string
+  price int 
+}
+```
+
+Setelah itu jalankan migrasi database:
+
+```
+npx prisma migrate dev --name init
+```
+
+Lalu coba lihat hasilnya 
+
+```
+npx prisma studio
+```
+
+<img width="950" height="auto" alt="image" src="https://github.com/user-attachments/assets/d3f76f13-d7c3-46dd-8b53-03cee1a6e8f5" />
