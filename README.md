@@ -1,126 +1,43 @@
-<<<<<<< HEAD
-# Laporan_Express_X_Database
+# Laporan Express X Database
 
-## Instal PostgreSQL di lokal 
+Express API using Prisma ORM 7 and PostgreSQL.
 
-```bash
-# Update package list & install PostgreSQL
-sudo apt update
-sudo apt install postgresql postgresql-contrib -y
+## Requirements
 
-# Jalankan service PostgreSQL
-sudo service postgresql start
+- Node.js `20.19+`, `22.12+`, or `24+`
+- PostgreSQL
 
-# Masuk ke CLI PostgreSQL untuk set password & buat database
-sudo -u postgres psql
-```
+## Setup
 
-- Set up password & nama database
+1. Create a PostgreSQL database for this project.
+2. Copy `.env.example` to `.env`, then set `DATABASE_URL` to your PostgreSQL connection string:
 
-```sql
--- Ganti 'password_kamu' dengan password yang kamu inginkan
-ALTER USER postgres WITH PASSWORD 'password_kamu';
+   ```text
+   postgresql://USER:PASSWORD@localhost:5432/DATABASE?schema=public
+   ```
 
--- Buat database baru untuk project kamu
-CREATE DATABASE nama_database;
+3. Install dependencies and prepare the database:
 
--- Keluar dari psql
-\q
-```
+   ```bash
+   npm install
+   npm run db:migrate
+   npm run db:generate
+   ```
 
-## Inisialisasi prisma di Project Express
+4. Start the API:
 
-```bash
-# Install Prisma Client dan Prisma CLI
-npm install @prisma/client
-npm install prisma --save-dev
+   ```bash
+   npm run dev
+   ```
 
-# Inisialisasi setup Prisma
-npx prisma init
-```
-=======
-# Laporan_Express_X_Database
+The API listens on `http://localhost:3000` by default. Set `PORT` in `.env` to use another port.
 
-## Instal PostgreSQL di lokal 
+## Product API
 
-```bash
-# Update package list & install PostgreSQL
-sudo apt update
-sudo apt install postgresql postgresql-contrib -y
+- `GET /products` — list products
+- `GET /products/:id` — get a product
+- `POST /products` — create a product with JSON `{"name":"Notebook","price":12000}`
+- `PUT /products/:id` — replace a product using the same JSON shape
+- `DELETE /products/:id` — delete a product
 
-# Jalankan service PostgreSQL
-sudo service postgresql start
-
-# Masuk ke CLI PostgreSQL untuk set password & buat database
-sudo -u postgres psql
-```
-
-### Set up password & nama database
-
-```sql
--- Ganti 'password_kamu' dengan password yang kamu inginkan
-ALTER USER postgres WITH PASSWORD 'password_kamu';
-
--- Buat database baru untuk project kamu
-CREATE DATABASE nama_database;
-
--- Keluar dari psql
-\q
-```
-
-## Inisialisasi prisma di Project Express
-
-```bash
-# Install Prisma Client dan Prisma CLI
-npm install @prisma/client
-npm install prisma --save-dev
-
-# Inisialisasi setup Prisma
-npx prisma init
-```
-
-Akan muncul file-file seperti di gambar ini:  
-
-<img width="auto" height="300" alt="image" src="https://github.com/user-attachments/assets/8afa7ebd-5bc1-418d-af80-3f9621e9695a" />
-
-## Konfigurasi connection string di file .env
-
-```bash
-DATABASE_URL="postgresql://username:password@localhost:5432/nama_database?schema=public"
-```
-
-Ubah password dan nama_database sesuai dengan set up yang telah di lakukan di CLI PostgreSQL tadi.
-
-## Buat schema model di `prisma/schema.prisma`
-
-```
-generator client {
-  provider = "prisma-client-js"
-}
-
-datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
-}
-
-model product {
-  id    int    @id    @default(autoincrement())
-  name  string
-  price int 
-}
-```
-
-Setelah itu jalankan migrasi database:
-
-```
-npx prisma migrate dev --name init
-```
-
-Lalu coba lihat hasilnya 
-
-```
-npx prisma studio
-```
-
-<img width="950" height="auto" alt="image" src="https://github.com/user-attachments/assets/d3f76f13-d7c3-46dd-8b53-03cee1a6e8f5" />
->>>>>>> 57443bb6f536ce8c708552e85e6f80d7c5d31355
+Use `npm run db:studio` to inspect the database or `npm run typecheck` to check the TypeScript sources.
