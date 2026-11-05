@@ -63,4 +63,46 @@ const createProduct: RequestHandler = async (request, response) => {
 
 router.post("/product", createProduct);
 
+const updateProduct: RequestHandler = async (request, response) => {
+  const { id, name, price } = request.body ?? {};
+
+  if (
+    !Number.isSafeInteger(id) ||
+    id <= 0 ||
+    typeof name !== "string" ||
+    name.trim().length === 0 ||
+    typeof price !== "number" ||
+    !Number.isSafeInteger(price) ||
+    price < 0 ||
+    price > 2_147_483_647
+  ) {
+    response.status(400).json({
+      success: false,
+      message: "ID, nama produk, dan harga yang valid wajib diisi.",
+    });
+    return;
+  }
+
+  try {
+    const product = await prisma.product.update({
+      where: { id },
+      data: { name: name.trim(), price },
+    });
+
+    response.status(200).json({
+      success: true,
+      message: "Berhasil mengupdate produk",
+      data: product,
+    });
+  } catch (error) {
+    console.error("Gagal mengupdate produk:", error);
+    response.status(500).json({
+      success: false,
+      message: "Gagal mengupdate produk",
+    });
+  }
+};
+
+router.put("/product", updateProduct);
+
 export default router;
