@@ -39,7 +39,8 @@ npx prisma init
 ```
 
 Akan muncul file-file seperti di gambar ini:  
-<img width="459" height="488" alt="image" src="https://github.com/user-attachments/assets/8afa7ebd-5bc1-418d-af80-3f9621e9695a" />
+
+<img width="auto" height="300" alt="image" src="https://github.com/user-attachments/assets/8afa7ebd-5bc1-418d-af80-3f9621e9695a" />
 
 ## Konfigurasi connection string di file .env
 
