@@ -105,4 +105,33 @@ const updateProduct: RequestHandler = async (request, response) => {
 
 router.put("/product", updateProduct);
 
+const deleteProduct: RequestHandler = async (request, response) => {
+  const id = Number(request.params.id);
+
+  if (!Number.isSafeInteger(id) || id <= 0) {
+    response.status(400).json({
+      success: false,
+      message: "ID produk harus berupa bilangan bulat positif.",
+    });
+    return;
+  }
+
+  try {
+    await prisma.product.delete({ where: { id } });
+
+    response.status(200).json({
+      success: true,
+      message: "Berhasil menghapus produk",
+    });
+  } catch (error) {
+    console.error("Gagal menghapus produk:", error);
+    response.status(500).json({
+      success: false,
+      message: "Gagal menghapus produk",
+    });
+  }
+};
+
+router.delete("/product/:id", deleteProduct);
+
 export default router;
