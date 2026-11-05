@@ -34,7 +34,7 @@ The API listens on `http://localhost:3000` by default. Set `PORT` in `.env` to u
 
 ## Product API
 
-- `GET /products` — list products
+- `GET /` or `GET /products` — list all products, ordered by ID
 - `GET /products/:id` — get a product
 - `POST /products` — create a product with JSON `{"name":"Notebook","price":12000}`
 - `PUT /products/:id` — replace a product using the same JSON shape
