@@ -266,3 +266,61 @@ const deleteProduct: RequestHandler = async (request, response) => {
 
 router.delete("/product/:id", deleteProduct);
 ```
+
+## Tahap pengujian 
+
+### Fitur post
+
+- Jika kolom nama dan price tidak diisi:
+    
+<img width="600" height="auto" alt="image" src="https://github.com/user-attachments/assets/9d3c436c-c11a-4970-9f68-5ee90e510363" />
+
+- Jika price pakai tanda kutip
+
+<img width="600" height="auto" alt="image" src="https://github.com/user-attachments/assets/1e5ef059-a5e7-4b16-90e6-1f85197444a0" />
+
+- Jika berhasil
+
+<img width="600" height="auto" alt="image" src="https://github.com/user-attachments/assets/a18cba83-3948-456a-8e17-1082fd5d2a98" />  
+
+<img width="600" height="auto" alt="image" src="https://github.com/user-attachments/assets/72389fa2-c098-4845-acfa-70944a9378b7" />
+
+
+### Fitur Get
+
+- Menampilkan semua product
+
+<img width="600" height="auto" alt="image" src="https://github.com/user-attachments/assets/7df3ef16-6dc1-4e8b-8108-e60396502bd9" />
+
+### Fitur Put 
+
+- Jika input update tidak sesuai format dan belum lengkap
+
+<img width="600" height="auto" alt="image" src="https://github.com/user-attachments/assets/618e5ab4-9ab7-46be-988f-26477d5b2ebc" />
+
+<img width="600" height="auto" alt="image" src="https://github.com/user-attachments/assets/738a27b6-4757-4ec6-b862-f45ab41fba48" />
+
+- Mengupdate product
+
+  <img width="600" height="auto" alt="image" src="https://github.com/user-attachments/assets/9e66b86a-ec70-4385-8486-133c018594db" />
+
+  <img width="600" height="auto" alt="image" src="https://github.com/user-attachments/assets/cab3af9c-dffe-4a9f-b801-f96cc5753a39" />
+
+### Fitur Delete
+
+- Jika id yang diinput tidak ada
+
+  <img width="600" height="auto" alt="image" src="https://github.com/user-attachments/assets/32fed98a-c9f1-4cc1-844a-92976a378827" />
+
+- Jika berhasil menghapus product
+
+  <img width="600" height="auto" alt="image" src="https://github.com/user-attachments/assets/a253fb65-9491-43ba-ae74-4bdbbadb5a63" />
+
+  <img width="600" height="auto" alt="image" src="https://github.com/user-attachments/assets/29501124-2a0b-423c-b42f-b9c9d2c54993" />
+
+### Hasil akhir di table 
+
+<img width="900" height="auto" alt="image" src="https://github.com/user-attachments/assets/a7052d4d-44fb-464f-80bc-00616ce11990" />
+
+
+
